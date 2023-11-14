@@ -3,6 +3,7 @@ using Korez73.IdServ.EFCore.IdentityServer;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
+using Microsoft.EntityFrameworkCore;
 
 namespace Korez73.IdServ.EFCore.IdentityServer;
 
@@ -10,9 +11,11 @@ internal static class HostingExtensions
 {
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
-        builder.Services.AddRazorPages();
+        //builder.Services.AddRazorPages();
+        var migrationsAssembly = typeof(Program).Assembly.GetName().Name;
+        const string connectionString = @"Data Source=Duende.IdentityServer.Quickstart.EntityFramework.db";
 
-        var isBuilder = builder.Services.AddIdentityServer(options =>
+        builder.Services.AddIdentityServer(options =>
             {
                 options.Events.RaiseErrorEvents = true;
                 options.Events.RaiseInformationEvents = true;
@@ -22,12 +25,21 @@ internal static class HostingExtensions
                 // see https://docs.duendesoftware.com/identityserver/v6/fundamentals/resources/
                 options.EmitStaticAudienceClaim = true;
             })
+            .AddConfigurationStore(options => {
+                options.ConfigureDbContext = b => b.UseSqlite(connectionString, 
+                    sql => sql.MigrationsAssembly(migrationsAssembly));
+            })
+            .AddOperationalStore(options =>
+            {
+                 options.ConfigureDbContext = b => b.UseSqlite(connectionString,
+                     sql => sql.MigrationsAssembly(migrationsAssembly));
+            })
             .AddTestUsers(TestUsers.Users);
 
-        // in-memory, code config
-        isBuilder.AddInMemoryIdentityResources(Config.IdentityResources);
-        isBuilder.AddInMemoryApiScopes(Config.ApiScopes);
-        isBuilder.AddInMemoryClients(Config.Clients);
+        // // in-memory, code config
+        // isBuilder.AddInMemoryIdentityResources(Config.IdentityResources);
+        // isBuilder.AddInMemoryApiScopes(Config.ApiScopes);
+        // isBuilder.AddInMemoryClients(Config.Clients);
 
 
         // if you want to use server-side sessions: https://blog.duendesoftware.com/posts/20220406_session_management/
