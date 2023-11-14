@@ -6,21 +6,21 @@ namespace Korez73.IdServ.EFCore.IdentityServer;
 
 public static class Config
 {
-    public static IEnumerable<IdentityResource> IdentityResources =>
-        new IdentityResource[]
-        {
-            new IdentityResources.OpenId(),
-            new IdentityResources.Profile(),
-            new IdentityResource()
-            {
-                Name = "verification",
-                UserClaims = new List<string>
-                {
-                    JwtClaimTypes.Email,
-                    JwtClaimTypes.EmailVerified
-                }
-            }
-        };
+    // public static IEnumerable<IdentityResource> IdentityResources =>
+    //     new IdentityResource[]
+    //     {
+    //         new IdentityResources.OpenId(),
+    //         new IdentityResources.Profile(),
+    //         new IdentityResource()
+    //         {
+    //             Name = "verification",
+    //             UserClaims = new List<string>
+    //             {
+    //                 JwtClaimTypes.Email,
+    //                 JwtClaimTypes.EmailVerified
+    //             }
+    //         }
+    //     };
 
     // public static IEnumerable<ApiScope> ApiScopes =>
     //     new List<ApiScope>
