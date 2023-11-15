@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Korez73.IdServ.AspNetCoreAndAPI.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
+namespace Korez73.IdServ.EFCore.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 {
     [DbContext(typeof(ConfigurationDbContext))]
     partial class ConfigurationDbContextModelSnapshot : ModelSnapshot

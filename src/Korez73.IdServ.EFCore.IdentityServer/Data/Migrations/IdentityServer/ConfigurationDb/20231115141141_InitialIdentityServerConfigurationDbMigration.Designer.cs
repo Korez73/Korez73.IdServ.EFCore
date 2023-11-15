@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Korez73.IdServ.AspNetCoreAndAPI.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
+namespace Korez73.IdServ.EFCore.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 {
     [DbContext(typeof(ConfigurationDbContext))]
-    [Migration("20231115124825_InitialIdentityServerConfigurationDbMigration")]
+    [Migration("20231115141141_InitialIdentityServerConfigurationDbMigration")]
     partial class InitialIdentityServerConfigurationDbMigration
     {
         /// <inheritdoc />

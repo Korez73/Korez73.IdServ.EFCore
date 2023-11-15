@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Korez73.IdServ.AspNetCoreAndAPI.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
+namespace Korez73.IdServ.EFCore.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 {
     /// <inheritdoc />
     public partial class InitialIdentityServerConfigurationDbMigration : Migration

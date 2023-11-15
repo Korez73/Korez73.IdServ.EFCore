@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Korez73.IdServ.AspNetCoreAndAPI.IdentityServer.Data.Migrations.IdentityServer.PersistedGrantDb
+namespace Korez73.IdServ.EFCore.IdentityServer.Data.Migrations.IdentityServer.PersistedGrantDb
 {
     [DbContext(typeof(PersistedGrantDbContext))]
     partial class PersistedGrantDbContextModelSnapshot : ModelSnapshot
