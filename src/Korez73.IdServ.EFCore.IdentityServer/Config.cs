@@ -51,6 +51,18 @@ public static class Config
                     IdentityServerConstants.StandardScopes.Profile,
                     "Korez73.IdServ.EFCore.API"
                 }
+            },
+            new Client
+            {
+                ClientId = "Korez73.IdServ.EFCore.Console",
+                //no interactive user, use the clientid/secret for authN
+                AllowedGrantTypes = GrantTypes.ClientCredentials,
+                //secret for authN
+                ClientSecrets = 
+                {
+                    new Secret("secret".Sha256())
+                },
+                AllowedScopes = {"Korez73.IdServ.EFCore.API"}
             }
         };
 }
